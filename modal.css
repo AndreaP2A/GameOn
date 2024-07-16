@@ -129,7 +129,7 @@ main {
 .footer {
   margin: 20px;
   padding: 10px;
-  font-family: var(--font-slab);
+  font-family: Roboto, sans-serif;
 }
 
 /* Modal form */
@@ -190,7 +190,7 @@ main {
 
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 14px;
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
@@ -610,8 +610,8 @@ input[data-error]::after {
   }
 
   .topnav .header-logo {
-    padding: 12px;
     display: inline;
+    padding-top: 12px;
   }
   .topnav.responsive {
     position: relative;
@@ -638,7 +638,8 @@ input[data-error]::after {
   .main-navbar {
     display: block;
     position: fixed; /* Fix the navbar position */
-    right: 0;
+    right: 12px;
+    top: 25px;
     background-color: #fff; /* Background color for visibility */
     z-index: 1000; /* Higher z-index to ensure it's on top */
     border-radius: 25px;
@@ -656,7 +657,7 @@ input[data-error]::after {
   }
 
   .hero-headline {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -678,6 +679,10 @@ input[data-error]::after {
     width: 140px;
     height: 30px;
   }
+
+  .formData {
+    padding-bottom: 1px;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -693,8 +698,12 @@ input[data-error]::after {
   .content {
     width: 100%;
     max-width: none;
-    top: 56px;
+    top: 79px;
     left: 0;
+  }
+
+  .hero-headline {
+    font-size: 2.2rem;
   }
 }
 
