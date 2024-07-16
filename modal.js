@@ -19,6 +19,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close"); // Selecting the close modal button
+const successCloseBtn = document.querySelector(".btn-close"); // Selecting the close modal button when form has been validated
 const form = document.querySelector("form[name='reserve']"); // Selecting the form
 const successMessage = document.getElementById("success-message"); // Success message div
 
@@ -42,6 +43,9 @@ function closeModal() {
 }
 // close modal event
 closeBtn.addEventListener("click", closeModal);
+
+// close modal event (with the "Fermer" button)
+successCloseBtn.addEventListener("click", closeModal);
 
 /* //////////////////////////////////////////// */
 /* ////////////////// ACTIVE ////////////////// */
@@ -162,8 +166,26 @@ form.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the real submission of the form (fake form)
   if (validate()) {
     form.style.display = "none"; // Hide the form to show success message
-    successMessage.style.display = "block"; // Show the success message
+    successMessage.style.display = "flex"; // Show the success message
+    successMessage.style.flexDirection = "column";
   } else {
     console.log("Form is invalid");
   }
 });
+
+// Resetting the inputs if the form has been validated successfully
+document
+  .getElementById("reservation-form")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+    clearFormInputs();
+    showSuccessMessage();
+  });
+
+function clearFormInputs() {
+  document.getElementById("reservation-form").reset();
+}
+
+function showSuccessMessage() {
+  document.querySelector(".modal-content").classList.add("show-success");
+}
