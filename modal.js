@@ -15,13 +15,13 @@ function editNav() {
 /* /////////////// DOM ELEMENTS /////////////// */
 /* //////////////////////////////////////////// */
 
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+const modalbg = document.querySelector(".bground"); // Selecting the modal
+const modalBtn = document.querySelectorAll(".modal-btn"); // Selecting the "Je m'inscris" button
+const formData = document.querySelectorAll(".formData"); //Selecting the inputs
 const closeBtn = document.querySelector(".close"); // Selecting the close modal button
-const successCloseBtn = document.querySelector(".btn-close"); // Selecting the close modal button when form has been validated
+const successCloseBtn = document.querySelector(".btn-close"); // Selecting the close modal button when form has been validated ("Fermer")
 const form = document.querySelector("form[name='reserve']"); // Selecting the form
-const successMessage = document.getElementById("success-message"); // Success message div
+const successMessage = document.getElementById("success-message"); // Selecting the success message div
 
 /* //////////////////////////////////////////// */
 /* ////////////////// MODAL /////////////////// */
@@ -30,28 +30,28 @@ const successMessage = document.getElementById("success-message"); // Success me
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// launch modal form
+// launch modal form function
 function launchModal() {
-  modalbg.style.display = "block";
+  modalbg.style.display = "block"; // Shows the background
   form.style.display = "block"; // Shows the form
-  successMessage.style.display = "none"; // Hides the success message
+  successMessage.style.display = "none"; // Hides the success message during form completion
 }
 
-// close modal form
+// close modal form function
 function closeModal() {
-  modalbg.style.display = "none";
+  modalbg.style.display = "none"; // Hides the form
 }
 // close modal event
 closeBtn.addEventListener("click", closeModal);
 
-// close modal event (with the "Fermer" button)
+// close modal event (with the "Fermer" button of the success message)
 successCloseBtn.addEventListener("click", closeModal);
 
 /* //////////////////////////////////////////// */
 /* ////////////////// ACTIVE ////////////////// */
 /* //////////////////////////////////////////// */
 
-// Function to update active link (and red bground) based on display value
+// Function to update active link (and red bground + line) based on display value (if mobile "Accueil" is available, on desktop no)
 function updateActiveLink() {
   const links = document.querySelectorAll(".main-navbar a");
 
@@ -60,7 +60,7 @@ function updateActiveLink() {
     link.classList.remove("active");
   });
 
-  // Find the first visible link and add the 'active' class
+  // Find the first visible link and add the 'active' class to it
   for (let i = 0; i < links.length; i++) {
     if (links[i].offsetParent !== null) {
       // Check if link is visible (desktop VS mobile)
@@ -73,7 +73,7 @@ function updateActiveLink() {
 // Updating active link on page load
 updateActiveLink();
 
-// Event listener for window resize (responsive)to update active link
+// Event listener for window resize (responsive) to update active link
 window.addEventListener("resize", updateActiveLink);
 
 /* //////////////////////////////////////////// */
@@ -157,23 +157,23 @@ function clearErrors() {
   formData.forEach((formField) => {
     formField.removeAttribute("data-error");
     formField.removeAttribute("data-error-visible");
-    formField.querySelector("input").style.border = "none";
+    formField.querySelector("input").style.border = "none"; //removes the red border
   });
 }
 
 // Attach the validation function to the form submit event
 form.addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent the real submission of the form (fake form)
+  event.preventDefault(); // Prevent the real submission of the form (fake form without backend)
   if (validate()) {
-    form.style.display = "none"; // Hide the form to show success message
-    successMessage.style.display = "flex"; // Show the success message
-    successMessage.style.flexDirection = "column";
+    form.style.display = "none"; // Hides the form
+    successMessage.style.display = "flex"; // Shows the success message
+    successMessage.style.flexDirection = "column"; // Have the success message and the "Fermer" button in a column
   } else {
     console.log("Form is invalid");
   }
 });
 
-// Resetting the inputs if the form has been validated successfully
+// Resetting/Clearing the inputs if the form has been validated successfully
 document
   .getElementById("reservation-form")
   .addEventListener("submit", function (event) {
