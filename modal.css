@@ -664,6 +664,7 @@ input[data-error]::after {
     line-height: normal;
     overflow-wrap: break-word;
     white-space: normal;
+    text-align: center;
   }
 
   .hero-text {
@@ -704,6 +705,7 @@ input[data-error]::after {
   }
 
   .hero-headline {
+    text-align: left;
     font-size: 2.2rem;
   }
 
