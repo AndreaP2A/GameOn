@@ -568,7 +568,7 @@ input[data-error]::after {
 
   .hero-text {
     width: unset;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
@@ -705,6 +705,11 @@ input[data-error]::after {
 
   .hero-headline {
     font-size: 2.2rem;
+  }
+
+  .hero-text {
+    width: unset;
+    font-size: 0.9rem;
   }
 }
 
